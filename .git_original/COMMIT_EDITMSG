@@ -1,0 +1,21 @@
+Many small refactorings
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Fri Apr 23 15:48:32 2021 +0200
+#
+# On branch master
+# Changes to be committed:
+#	new file:   ../images/protein5-22(see_txt-file).png
+#	new file:   ../images/protein5-22.txt
+#	new file:   ../images/protein5-23.png
+#	new file:   ../images/protein9-40(see_txt-file).png
+#	new file:   ../images/protein9-40.txt
+#	modified:   algorithms.py
+#	modified:   main.py
+#	modified:   protein.py
+#	modified:   ../tests/algorithms_test.py
+#	modified:   ../tests/conftest.py
+#	modified:   ../tests/protein_test.py
+#

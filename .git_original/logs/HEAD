@@ -1,0 +1,41 @@
+0000000000000000000000000000000000000000 4d4c14b630f973095ccd35459b6e800fd5b3a7ba 0rin <orinhabich@gmail.com> 1618510172 +0200	commit (initial): Initial commit
+4d4c14b630f973095ccd35459b6e800fd5b3a7ba 64ee92b32b6a0c88985fd5497137d1ad9a031568 0rin <orinhabich@gmail.com> 1618510493 +0200	commit (amend): Initial commit
+64ee92b32b6a0c88985fd5497137d1ad9a031568 e0f34aa4215c6d4583a358cb71b18201c804fac5 0rin <orinhabich@gmail.com> 1618565053 +0200	commit: Add score function
+e0f34aa4215c6d4583a358cb71b18201c804fac5 ba3f18581dde2646f47ad3a399c7ee2598bd8ee3 0rin <orinhabich@gmail.com> 1618565420 +0200	commit (amend): Add score function
+ba3f18581dde2646f47ad3a399c7ee2598bd8ee3 f4eeec618c01c6d4a1715381f3ff0034aa96bde2 0rin <orinhabich@gmail.com> 1618653972 +0200	commit: Improve random folding, WITH BUG
+f4eeec618c01c6d4a1715381f3ff0034aa96bde2 0dc423e6e57d5692b448f68d48f5ef85e72673db 0rin <orinhabich@gmail.com> 1618666637 +0200	commit: TDD: one fold first
+0dc423e6e57d5692b448f68d48f5ef85e72673db 3826d43273b18f17153407e8ec3481ae5a7821e1 0rin <orinhabich@gmail.com> 1618728569 +0200	commit: Use linear algebra to fold
+3826d43273b18f17153407e8ec3481ae5a7821e1 8b819345da1bc8b11d569793ef2b7a10ff5209b0 0rin <orinhabich@gmail.com> 1618746355 +0200	commit: Refactorings
+8b819345da1bc8b11d569793ef2b7a10ff5209b0 1bd16e7df46e64fadb32ca266bc4325fdd4c62e3 0rin <orinhabich@gmail.com> 1618747883 +0200	commit (amend): Refactorings
+1bd16e7df46e64fadb32ca266bc4325fdd4c62e3 147032897c62367d1709c661af0068f2c24d7b18 0rin <orinhabich@gmail.com> 1618811180 +0200	commit: Refactor tests, look at coverage
+147032897c62367d1709c661af0068f2c24d7b18 d6eb9c65d66f8c907754076f68ee9fc93f3f6240 0rin <orinhabich@gmail.com> 1618907302 +0200	commit: Change from Unittest to Pytest
+d6eb9c65d66f8c907754076f68ee9fc93f3f6240 f225d5269edee58fe0c898fe15b199566e438ebd 0rin <orinhabich@gmail.com> 1618994595 +0200	commit: Refactorings, style, add .gitignore
+f225d5269edee58fe0c898fe15b199566e438ebd 2fc876c0bb083588fe9f7444237d4d61dfb4a3e3 0rin <orinhabich@gmail.com> 1618994641 +0200	commit (amend): Refactorings, style, add .gitignore
+2fc876c0bb083588fe9f7444237d4d61dfb4a3e3 f05d8389b614c06b1e066d60a2bc03b22c3e5ba7 0rin <orinhabich@gmail.com> 1618997590 +0200	commit (amend): Refactorings, style, add .gitignore
+f05d8389b614c06b1e066d60a2bc03b22c3e5ba7 cd354d7def44d9ca6909bb2f5a8bd32774172c30 0rin <orinhabich@gmail.com> 1618997658 +0200	commit (amend): Refactorings, style, add .gitignore
+cd354d7def44d9ca6909bb2f5a8bd32774172c30 04d50caf6318c160ceca5dd4b808caff15468c8e 0rin <orinhabich@gmail.com> 1619005248 +0200	commit: Use pycodestyle and update .gitignore
+04d50caf6318c160ceca5dd4b808caff15468c8e a6689050c9ef4ceac1e4316946ade194f54e9536 0rin <orinhabich@gmail.com> 1619025880 +0200	commit: Refactoring. Isolate score function
+a6689050c9ef4ceac1e4316946ade194f54e9536 232b0cf7b1b965785f0cacee791c7ba906b26ce7 0rin <orinhabich@gmail.com> 1619028132 +0200	commit: Refactoring. Isolate algorithms
+232b0cf7b1b965785f0cacee791c7ba906b26ce7 bb44dffc4d3f534cf6db942593765f9e6e5b2fd1 0rin <orinhabich@gmail.com> 1619031282 +0200	commit (amend): Refactoring. Isolate algorithms
+bb44dffc4d3f534cf6db942593765f9e6e5b2fd1 86f0313408ed87b65c4a3c797d349691b55aeee5 0rin <orinhabich@gmail.com> 1619031498 +0200	commit (amend): Refactoring. Isolate algorithms
+86f0313408ed87b65c4a3c797d349691b55aeee5 4222c3306b39ff59d27fdbce9b7c2461c93770fc 0rin <orinhabich@gmail.com> 1619031746 +0200	commit (amend): Refactoring. Isolate algorithms
+4222c3306b39ff59d27fdbce9b7c2461c93770fc c3da62ea1bea7ae0a02bdba06795014f8cf0ec75 0rin <orinhabich@gmail.com> 1619078714 +0200	commit: Refactoring. Score() to algorithms.py, and plot() to protein_plotter.py
+c3da62ea1bea7ae0a02bdba06795014f8cf0ec75 d2690b5ba120380346114424d981439b4550a3aa 0rin <orinhabich@gmail.com> 1619079214 +0200	commit (amend): Refactoring. Score() to algorithms.py, and plot() to protein_plotter.py
+d2690b5ba120380346114424d981439b4550a3aa f7cc557e2bbc56b62a1a0530cf7aee050993a850 0rin <orinhabich@gmail.com> 1619097607 +0200	commit: Refactor _rotation_matrix() and add some documentation
+f7cc557e2bbc56b62a1a0530cf7aee050993a850 4fc571ce639368ffbf73782d275339f29bca1e01 0rin <orinhabich@gmail.com> 1619100037 +0200	commit: Refactor random_folding() to algorithms
+4fc571ce639368ffbf73782d275339f29bca1e01 ffd69a6cc1403ad3f4fb4b9218041837bfeef3bb 0rin <orinhabich@gmail.com> 1619101568 +0200	commit: Experiment showing that starting from some random folding pays off
+ffd69a6cc1403ad3f4fb4b9218041837bfeef3bb 10e0d9cfc81c8213bfa4c76bbb5808a7c09213d2 0rin <orinhabich@gmail.com> 1619113186 +0200	commit: Add documentation
+10e0d9cfc81c8213bfa4c76bbb5808a7c09213d2 0e67614c85b3f6ac654edf3584c1d363ff61dac2 0rin <orinhabich@gmail.com> 1619120338 +0200	commit: Optimalization. Don't try same rotations again.
+0e67614c85b3f6ac654edf3584c1d363ff61dac2 e0f1ceeed8081afdd129c4463120efcf1ab8b865 0rin <orinhabich@gmail.com> 1619120742 +0200	commit (amend): Optimalization. Don't try same rotations again.
+e0f1ceeed8081afdd129c4463120efcf1ab8b865 fc657d6effc091766dcf76384b7900457b26857f 0rin <orinhabich@gmail.com> 1619163197 +0200	commit: Prepare for more optimalizations
+fc657d6effc091766dcf76384b7900457b26857f 94c755f8de8beffd3edad6f8dd48c5ebc044fe00 0rin <orinhabich@gmail.com> 1619173992 +0200	commit: Optimalizations
+94c755f8de8beffd3edad6f8dd48c5ebc044fe00 fb947f5a2619a5d90d502d7ad6b889995bd3e5e0 0rin <orinhabich@gmail.com> 1619174008 +0200	commit (amend): Optimalization. Don't try index again if folding there is not possible.
+fb947f5a2619a5d90d502d7ad6b889995bd3e5e0 c46c1138639965ef68eed358932d1479687e8e34 0rin <orinhabich@gmail.com> 1619175231 +0200	commit: Add part C (about aminozuur Cysteine)
+c46c1138639965ef68eed358932d1479687e8e34 cc91884248689a4cb4b67cc3219c97d684486034 0rin <orinhabich@gmail.com> 1619185712 +0200	commit: Many small refactorings
+cc91884248689a4cb4b67cc3219c97d684486034 c3e8dcc1ce9e68b0b5d83b1469e033d0298c45b2 0rin <orinhabich@gmail.com> 1619187142 +0200	commit (amend): Many small refactorings
+c3e8dcc1ce9e68b0b5d83b1469e033d0298c45b2 0000000000000000000000000000000000000000 0rin <0rin@github.com> 1619199712 +0200	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 c3e8dcc1ce9e68b0b5d83b1469e033d0298c45b2 0rin <0rin@github.com> 1619199712 +0200	Branch: renamed refs/heads/master to refs/heads/main
+c3e8dcc1ce9e68b0b5d83b1469e033d0298c45b2 0000000000000000000000000000000000000000 0rin <0rin@github.com> 1619199722 +0200	Branch: renamed refs/heads/main to refs/heads/main
+c3e8dcc1ce9e68b0b5d83b1469e033d0298c45b2 c3e8dcc1ce9e68b0b5d83b1469e033d0298c45b2 0rin <0rin@github.com> 1619199722 +0200	Branch: renamed refs/heads/main to refs/heads/main
+c3e8dcc1ce9e68b0b5d83b1469e033d0298c45b2 0000000000000000000000000000000000000000 0rin <0rin@github.com> 1619200589 +0200	Branch: renamed refs/heads/main to refs/heads/master
+0000000000000000000000000000000000000000 c3e8dcc1ce9e68b0b5d83b1469e033d0298c45b2 0rin <0rin@github.com> 1619200589 +0200	Branch: renamed refs/heads/main to refs/heads/master
