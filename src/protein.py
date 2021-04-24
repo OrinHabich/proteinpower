@@ -17,15 +17,16 @@ class Protein():
         collision = True
         attempts = 0
         possible_rotations = list(self._rotation_matrices().keys())
+        random.shuffle(possible_rotations)
         hinge_acid = self.acids[index]
         while collision:
-            rotation_choice = random.choice(possible_rotations)
+            rotation_choice = possible_rotations[0]
             M = self._rotation_matrices()[rotation_choice]
             for acid in self.acids[index+1:]:
                 self._rotate(acid, M, hinge_acid)
             collision = not self._injective()
             if collision:
-                possible_rotations.remove(rotation_choice)
+                del possible_rotations[0]
                 if not possible_rotations:
                     return False
         return True

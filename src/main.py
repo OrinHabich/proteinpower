@@ -13,10 +13,25 @@ protein_string5 = 'HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH'  # Best: 
 # With C's
 protein_string6 = 'PPCHHPPCHPPPPCHHHHCHHPPHHPPPPHHPPHPP'  # Best: -28
 protein_string7 = 'CPPCHPPCHPPCPPHHHHHHCCPCHPPCPCHPPHPC'
-protein_string8 = 'HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH'  # Best: -41
+protein_string8 = 'HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH'  # Best: -55
 protein_string9 = 'HCPHPHPHCHHHHPCCPPHPPPHPPPPCPPPHPPPHPHHHHCHPHPHPHH'
 
 
+def timer(fn):
+    """Generic decorator to test performance."""
+    import time
+
+    @wraps(fn)
+    def wrapper_timer(*args, **kwargs):
+        start_time = time.time()
+        result = fn(*args, *kwargs)
+        end_time = time.time()
+        execution_time = round(end_time - start_time, 3)
+        print(f'{fn.__name__} execution time: {execution_time} seconds')
+        return result
+    return wrapper_timer
+
+@timer
 def best_of(protein, n, m):
     """Take a protein. Give it a random folding. Try to fold the protein m
     times to improve this folding. Print the resulting score. Repeat this n
@@ -30,11 +45,12 @@ def best_of(protein, n, m):
         if score < best_score:
             best_score = score
             best_result = protein
-        print('score: {}, best_score: {}'.format(score, best_score))
+            # print('score: {}, best_score: {}'.format(score, best_score))
+    print('best_score: {}'.format(best_score))
     return best_result
 
 
 protein = Protein(protein_string8)
-best_folding = best_of(protein, 200, 500)
+best_folding = best_of(protein, 50, 1000)
 ProteinPlotter.plot(best_folding)
 

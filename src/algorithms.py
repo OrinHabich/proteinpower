@@ -38,10 +38,11 @@ class Algorithms():
         highscore = cls.score(protein) or 1
         for i in range(n):
             indices_possible = list(range(1, len(protein.acids)-1))
+            random.shuffle(indices_possible)
             success = False
             while not success:
                 previous_folding = [acid.copy() for acid in protein.acids]
-                index = random.choice(indices_possible)
+                index = indices_possible[0]
                 if protein.fold(index):
                     score = cls.score(protein)
                     if score > highscore:
@@ -51,7 +52,7 @@ class Algorithms():
                     success = True
                 else:
                     protein.acids = previous_folding
-                    indices_possible.remove(index)
+                    del indices_possible[0]
                 if not indices_possible:
                     return
 
