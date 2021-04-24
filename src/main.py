@@ -13,7 +13,7 @@ protein_string5 = 'HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH'  # Best: 
 # With C's
 protein_string6 = 'PPCHHPPCHPPPPCHHHHCHHPPHHPPPPHHPPHPP'  # Best: -28
 protein_string7 = 'CPPCHPPCHPPCPPHHHHHHCCPCHPPCPCHPPHPC'
-protein_string8 = 'HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH'
+protein_string8 = 'HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH'  # Best: -41
 protein_string9 = 'HCPHPHPHCHHHHPCCPPHPPPHPPPPCPPPHPPPHPHHHHCHPHPHPHH'
 
 def best_of(protein, n, m):
@@ -33,6 +33,6 @@ def best_of(protein, n, m):
     return best_result
 
 protein = Protein(protein_string8)
-best_folding = best_of(protein, 100, 2000)
+best_folding = best_of(protein, 200, 500)
 ProteinPlotter.plot(best_folding)
 

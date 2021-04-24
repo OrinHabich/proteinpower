@@ -36,8 +36,8 @@ class Algorithms():
         Note that this is basically a hillclimber.
         """
         highscore = cls.score(protein) or 1
-        indices_possible = list(range(1, len(protein.acids)-1))
         for i in range(n):
+            indices_possible = list(range(1, len(protein.acids)-1))
             success = False
             attempts = 0
             while not success:
