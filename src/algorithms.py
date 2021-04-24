@@ -39,7 +39,6 @@ class Algorithms():
         for i in range(n):
             indices_possible = list(range(1, len(protein.acids)-1))
             success = False
-            attempts = 0
             while not success:
                 previous_folding = [acid.copy() for acid in protein.acids]
                 index = random.choice(indices_possible)
