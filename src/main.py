@@ -40,19 +40,23 @@ def best_of(protein, n, m):
     best_score = 0
     for _ in range(n):
         if not Algorithms.random_folding(protein):
-            print("oke let's continue")
+            print("failed to get a random folding as start")
             continue
-        Algorithms.fold_n_times(m, protein)
+        if not Algorithms.fold_n_times(m, protein, max_tolerance=5):
+            print("failed to fold n times")
         score = Algorithms.score(protein)
         if score < best_score:
             best_score = score
-            best_result = protein
-            # print('score: {}, best_score: {}'.format(score, best_score))
-    print('best_score: {}'.format(best_score))
+            best_result = protein.acids.copy()
+        print('score: {}, best_score: {}'.format(score, best_score))
+    # print('best_score: {}'.format(best_score))
     return best_result
 
 
 protein = Protein(protein_string8)
-best_folding = best_of(protein, 1000, 200)
-ProteinPlotter.plot(best_folding)
+best_result = best_of(protein, 1, 1000)
+protein_best = Protein(protein_string8)
+protein_best.acids = best_result
+print('score van best_folding', Algorithms.score(protein_best))
+ProteinPlotter.plot(protein_best)
 
