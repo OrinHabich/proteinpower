@@ -66,17 +66,25 @@ class Algorithms():
                          'acid_type': acids_string[0]}
         result = [previous_acid]
         for type_acid in acids_string[1::]:
-            collision = True
-            while collision:
-                axis = random.choice(['x', 'y', 'z'])
-                direction = random.choice([-1, 1])
+            possible = [('x', -1), ('x',  1),
+                        ('y', -1), ('y',  1),
+                        ('z', -1), ('z',  1)]
+            random.shuffle(possible)
+            success = False
+            while not success:
+                axis, direction = possible[0]
                 acid = previous_acid.copy()
-                acid['acid_type'] = type_acid
                 acid[axis] += direction
-                collision = cls._same_position(result, acid)
+                acid['acid_type'] = type_acid
+                success = not cls._same_position(result, acid)
+                if not success:
+                    del possible[0]
+                    if not possible:
+                        return False
             previous_acid = acid
             result.append(acid)
         protein.acids = result
+        return True
 
     @staticmethod
     def _same_position(folded_part, new_acid):

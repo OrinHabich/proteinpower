@@ -5,11 +5,12 @@ from src.protein import Protein
 
 
 class Helpers:
+    """Helper methods for tests."""
     @staticmethod
-    def assert_correct_order(protein, protein_acids):
-        assert len(protein.acids) == len(protein_acids)
+    def assert_correct_order(p, protein_acids):
+        assert len(p.acids) == len(protein_acids)
         for i, acid_type in enumerate(protein_acids):
-            assert protein.acids[i]['acid_type'], acid_type
+            assert p.acids[i]['acid_type'], acid_type
 
 
 @pytest.fixture

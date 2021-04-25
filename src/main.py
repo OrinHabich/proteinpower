@@ -39,7 +39,9 @@ def best_of(protein, n, m):
     """
     best_score = 0
     for _ in range(n):
-        Algorithms.random_folding(protein)
+        if not Algorithms.random_folding(protein):
+            print("oke let's continue")
+            continue
         Algorithms.fold_n_times(m, protein)
         score = Algorithms.score(protein)
         if score < best_score:
@@ -51,6 +53,6 @@ def best_of(protein, n, m):
 
 
 protein = Protein(protein_string8)
-best_folding = best_of(protein, 50, 1000)
+best_folding = best_of(protein, 1000, 200)
 ProteinPlotter.plot(best_folding)
 
