@@ -7,8 +7,8 @@ def test_score(protein):
     assert Algorithms.score(protein) == -1
 
 
-def test_find_connections(protein):
-    weak_bonds, _ = Algorithms.find_connections(protein.acids)
+def test_find_bonds(protein):
+    weak_bonds, _ = Algorithms.find_bonds(protein.acids)
     assert len(weak_bonds) == 1
 
 
@@ -23,4 +23,9 @@ def test_random_folding(protein, acids_string, helpers):
     assert protein.acids[0]['x'] == 0
     assert protein.acids[0]['y'] == 0
     assert protein.acids[0]['z'] == 0
+    assert protein._injective()
+
+def test_cube_folding(protein, acids_string, helpers):
+    Algorithms.cube_folding(protein)
+    helpers.assert_correct_order(protein, acids_string)
     assert protein._injective()

@@ -8,7 +8,7 @@ class ProteinPlotter():
     """Functionality to make a 3D plot of a folded protein."""
 
     @classmethod
-    def plot(cls, protein, show_connections=True, scale_axes=True,
+    def plot(cls, protein, show_bonds=True, scale_axes=True,
              show_plot=True):
         """Plot a protein."""
         acids = protein.acids
@@ -29,8 +29,8 @@ class ProteinPlotter():
 
         axes.scatter3D(x, y, z, facecolor=acid_colors)
 
-        if show_connections:
-            axes = cls._add_connections_to_plot(axes, acids)
+        if show_bonds:
+            axes = cls._add_bonds_to_plot(axes, acids)
 
         if show_plot:
             plt.show()
@@ -57,34 +57,23 @@ class ProteinPlotter():
         return (x, y, z, acid_colors)
 
     @staticmethod
-    def _add_connections_to_plot(axes, acids):
-        """Add certain connections in a folding to the plot."""
-        weak_bonds, strong_bonds = Algorithms.find_connections(acids)
-        for connection in weak_bonds:
-            x_connections = []
-            y_connections = []
-            z_connections = []
-            for acid in connection:
-                x_connections.append(acid['x'])
-                y_connections.append(acid['y'])
-                z_connections.append(acid['z'])
-                axes.plot3D(x_connections,
-                            y_connections,
-                            z_connections,
-                            color='black',
-                            linestyle='dotted')
-
-        for connection in strong_bonds:
-            x_connections = []
-            y_connections = []
-            z_connections = []
-            for acid in connection:
-                x_connections.append(acid['x'])
-                y_connections.append(acid['y'])
-                z_connections.append(acid['z'])
-                axes.plot3D(x_connections,
-                            y_connections,
-                            z_connections,
-                            color='black',
-                            linestyle='dashed')
+    def _add_bonds_to_plot(axes, acids):
+        """Add certain bonds in a folding to the plot."""
+        bonds = Algorithms.find_bonds(acids)
+        linestyle = 'dotted'
+        for bond_type in bonds:
+            for bond in bond_type:
+                x_bonds = []
+                y_bonds = []
+                z_bonds = []
+                for acid in bond:
+                    x_bonds.append(acid['x'])
+                    y_bonds.append(acid['y'])
+                    z_bonds.append(acid['z'])
+                    axes.plot3D(x_bonds,
+                                y_bonds,
+                                z_bonds,
+                                color='black',
+                                linestyle=linestyle)
+            linestyle = 'dashed'
         return axes

@@ -12,12 +12,12 @@ class Algorithms():
         enables comparison of protein foldings. The lower the number, the
         better.
         """
-        weak_bonds, strong_bonds = cls.find_connections(protein.acids)
+        weak_bonds, strong_bonds = cls.find_bonds(protein.acids)
         return len(weak_bonds) * -1 + len(strong_bonds) * -5
 
     @classmethod
-    def find_connections(cls, acids):
-        """Find all connections in a folding."""
+    def find_bonds(cls, acids):
+        """Find all bonds in a folding."""
         relevant_acids = [acid for acid in acids if acid['acid_type'] != 'P']
         weak_bonds = []
         strong_bonds = []
@@ -91,6 +91,37 @@ class Algorithms():
             result.append(acid)
         protein.acids = result
         return True
+
+    @classmethod
+    def cube_folding(cls, protein, d3=True, shift=''):
+        """Fold the given protein in a zigzagging manner into a rectangular
+        shape (if d3 is false) or a cube (if d3 is true). With the shift
+        keyword the foldings of the protein shift the length of the shift
+        argument."""
+        acid_types = list(shift + protein.acids_string)
+        if d3:
+            d = len(acid_types)**(1/3)
+        else:
+            d = math.sqrt(len(acid_types))
+        width = list(range(math.floor(d)))
+        length = list(range(math.ceil(d)))
+        z = 0
+        result = []
+        while True:
+            for y in length:
+                for x in width:
+                    acid = {'x': x,
+                            'y': y,
+                            'z': z,
+                            'acid_type': acid_types.pop(0)}
+                    result.append(acid)
+                    if not acid_types:
+                        protein.acids = result[len(shift):]
+                        return True
+                width = width[::-1]
+            length = length[::-1]
+            z += 1
+        return False
 
     @staticmethod
     def _same_position(folded_part, new_acid):
