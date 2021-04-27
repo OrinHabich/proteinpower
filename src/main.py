@@ -59,11 +59,7 @@ def best_of(protein, n, m, folding=None):
 
 
 protein = Protein(acids_sequence8)
-<<<<<<< HEAD
-best_of(protein, 5, 100, folding='random_folding')
-=======
 best_of(protein, 50, 1000, folding='random_folding')
->>>>>>> b75d741fa17f0639d7beae40c7a6119a0552ef11
 print('score van best_folding', Algorithms.score(protein))
 ProteinPlotter.plot(protein)
 
