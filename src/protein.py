@@ -5,8 +5,8 @@ import numpy as np
 
 class Protein():
     """A string of acids that can be folded on 90 degree angles."""
-    def __init__(self, acids_string, folding=None):
-        self.acids_string = acids_string
+    def __init__(self, acids_sequence, folding=None):
+        self.acids_sequence = acids_sequence
         self.acids = folding or self._no_folding()
 
     def fold(self, index):
@@ -75,9 +75,9 @@ class Protein():
         previous_acid = {'x': 0,
                          'y': 0,
                          'z': 0,
-                         'acid_type': self.acids_string[0]}
+                         'acid_type': self.acids_sequence[0]}
         result = [previous_acid]
-        for type_acid in self.acids_string[1::]:
+        for type_acid in self.acids_sequence[1::]:
             acid = previous_acid.copy()
             acid['acid_type'] = type_acid
             acid['x'] += 1

@@ -12,20 +12,20 @@ def test_find_bonds(protein):
     assert len(weak_bonds) == 1
 
 
-def test_fold_100_times(protein, acids_string, helpers):
+def test_fold_100_times(protein, acids_sequence, helpers):
     Algorithms.fold_n_times(100, protein)
-    helpers.assert_correct_order(protein, acids_string)
+    helpers.assert_correct_order(protein, acids_sequence)
 
 
-def test_random_folding(protein, acids_string, helpers):
+def test_random_folding(protein, acids_sequence, helpers):
     Algorithms.random_folding(protein)
-    helpers.assert_correct_order(protein, acids_string)
+    helpers.assert_correct_order(protein, acids_sequence)
     assert protein.acids[0]['x'] == 0
     assert protein.acids[0]['y'] == 0
     assert protein.acids[0]['z'] == 0
     assert protein._injective()
 
-def test_cube_folding(protein, acids_string, helpers):
+def test_cube_folding(protein, acids_sequence, helpers):
     Algorithms.cube_folding(protein)
-    helpers.assert_correct_order(protein, acids_string)
+    helpers.assert_correct_order(protein, acids_sequence)
     assert protein._injective()

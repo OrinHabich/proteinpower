@@ -65,13 +65,13 @@ class Algorithms():
     @classmethod
     def random_folding(cls, protein):
         """Return a random folding of the protein."""
-        acids_string = protein.acids_string
+        acids_sequence = protein.acids_sequence
         previous_acid = {'x': 0,
                          'y': 0,
                          'z': 0,
-                         'acid_type': acids_string[0]}
+                         'acid_type': acids_sequence[0]}
         result = [previous_acid]
-        for type_acid in acids_string[1::]:
+        for type_acid in acids_sequence[1::]:
             possible = [('x', -1), ('x',  1),
                         ('y', -1), ('y',  1),
                         ('z', -1), ('z',  1)]
@@ -98,7 +98,7 @@ class Algorithms():
         shape (if d3 is false) or a cube (if d3 is true). With the shift
         keyword the foldings of the protein shift the length of the shift
         argument."""
-        acid_types = list(shift + protein.acids_string)
+        acid_types = list(shift + protein.acids_sequence)
         if d3:
             d = len(acid_types)**(1/3)
         else:
