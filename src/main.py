@@ -32,13 +32,15 @@ def timer(fn):
     return wrapper_timer
 
 @timer
-def best_of(protein, n, m, folding=None):
-    """Take a protein. Give it a random folding. Try to fold the protein m
-    times to improve this folding. Print the resulting score. Repeat this n
-    times. Return the best result.
+def best_of(acids_sequence, n, m, folding=None):
+    """Take a sequence of acids. Give it a certain folding. Try to fold the
+    protein m times to improve this folding. Print the resulting score. Repeat
+    this n times. Return the best result.
     """
-    best_score = 0
+    print('folding:', folding)
+    best_score = 1
     for _ in range(n):
+        protein = Protein(acids_sequence)
         if folding == 'cube_folding':
             if not Algorithms.cube_folding(protein, shift='', d3=True):
                 print("failed to get a cube folding as start")
@@ -55,18 +57,15 @@ def best_of(protein, n, m, folding=None):
             best_result = [acid.copy() for acid in protein.acids]
         print('score: {}, best_score: {}'.format(score, best_score))
     protein.acids = best_result
-    return
+    return protein
 
 
-protein = Protein(acids_sequence8)
-best_of(protein, 50, 1000, folding='random_folding')
+# protein = Protein(acids_sequence8)
+protein = best_of(acids_sequence8, 1, 10, 'random_folding')
 print('score van best_folding', Algorithms.score(protein))
 ProteinPlotter.plot(protein)
 
-# # Cube folding, while shifting the sequence through the zigzag
-# for n in range(3):
-#     protein = Protein(acids_sequence8)
-#     Algorithms.cube_folding(protein, shift=n*'1', d3=True)
-#     print('score:', Algorithms.score(protein))
-#     ProteinPlotter.plot(protein)
+Algorithms.cube_folding(protein, shift='--', d3=True)
+print('score of cube_folding:', Algorithms.score(protein))
+ProteinPlotter.plot(protein)
 
