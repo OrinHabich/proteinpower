@@ -19,7 +19,7 @@ def helpers():
 
 
 @pytest.fixture
-def acids_string():
+def acids_sequence():
     return 'HHPHHHPH'
 
 
