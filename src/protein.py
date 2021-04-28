@@ -16,20 +16,29 @@ class Protein():
         """
         collision = True
         attempts = 0
-        possible_rotations = list(self._rotation_matrices().keys())
-        random.shuffle(possible_rotations)
-        hinge_acid = self.acids[index]
+        rotations = self._useful_rotations(index)
         while collision:
-            rotation_choice = possible_rotations[0]
+            rotation_choice = rotations[0]
             M = self._rotation_matrices()[rotation_choice]
             for acid in self.acids[index+1:]:
-                self._rotate(acid, M, hinge_acid)
+                self._rotate(acid, M, self.acids[index])
             collision = not self._injective()
             if collision:
-                del possible_rotations[0]
-                if not possible_rotations:
+                del rotations[0]
+                if not rotations:
                     return False
         return True
+
+    def _useful_rotations(self, index):
+        """Obtain all possible rotations and filter out the unuseful."""
+        possible_rotations = list(self._rotation_matrices().keys())
+        acid = self.acids[index]
+        acid_before = self.acids[index - 1]
+        not_useful = [c for c in 'xyz' if acid[c] != acid_before[c]][0]
+        useful_rotations = list(filter(lambda r: r[0] != not_useful,
+                                        possible_rotations))
+        random.shuffle(useful_rotations)
+        return useful_rotations
 
     def _injective(self):
         """ Assert this protein is injective."""

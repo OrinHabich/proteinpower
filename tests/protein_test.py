@@ -3,24 +3,10 @@ sys.path.append("..")
 from src.protein import Protein
 
 
-def test_no_folding(acids_sequence, helpers):
+def test_fold(acids_sequence, helpers):
     protein = Protein(acids_sequence)
+    end_point_before_folding = protein.acids[-1].copy()
+    protein.fold(1)
+    end_point_after_folding = protein.acids[-1]
+    assert end_point_before_folding != end_point_after_folding
     helpers.assert_correct_order(protein, acids_sequence)
-
-
-def test_fold(protein, acids_sequence, helpers):
-    protein.fold(3)
-    helpers.assert_correct_order(protein, acids_sequence)
-
-
-def test_own_folding(acids_sequence):
-    own_folding = [{'x': 1, 'y': 0, 'z': 0, 'acid_type': 'H'},
-                   {'x': 1, 'y': 0, 'z': 0, 'acid_type': 'H'},
-                   {'x': 2, 'y': 0, 'z': 0, 'acid_type': 'P'},
-                   {'x': 3, 'y': 0, 'z': 0, 'acid_type': 'H'},
-                   {'x': 4, 'y': 0, 'z': 0, 'acid_type': 'H'},
-                   {'x': 5, 'y': 0, 'z': 0, 'acid_type': 'H'},
-                   {'x': 6, 'y': 0, 'z': 0, 'acid_type': 'P'},
-                   {'x': 6, 'y': 1, 'z': 0, 'acid_type': 'H'}]
-    protein = Protein(acids_sequence, folding=own_folding)
-    assert protein.acids, own_folding

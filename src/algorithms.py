@@ -31,7 +31,7 @@ class Algorithms():
         return weak_bonds, strong_bonds
 
     @classmethod
-    def fold_n_times(cls, n, protein, max_tolerance=0):
+    def fold_n_times(cls, n, protein):
         """Fold the given protein n times. Stop if folding is not possible.
         Note that this is basically a hillclimber.
         """
@@ -41,25 +41,20 @@ class Algorithms():
             random.shuffle(indices_possible)
             success = False
             while not success:
-                tolerance = 0
                 previous_folding = [acid.copy() for acid in protein.acids]
-                while tolerance <= max_tolerance:
-                    index = indices_possible[0]
-                    if protein.fold(index):
-                        score = cls.score(protein)
-                        if score > highscore:
-                            protein.acids = previous_folding
-                        else:
-                            highscore = score
-                        success = True
-                        break
+                index = indices_possible[0]
+                if protein.fold(index):
+                    score = cls.score(protein)
+                    if score > highscore:
+                        protein.acids = previous_folding
                     else:
-                        tolerance += 1
-                        del indices_possible[0]
-                        if not indices_possible:
-                            return False
-                if not success:
+                        highscore = score
+                    success = True
+                else:
                     protein.acids = previous_folding
+                    del indices_possible[0]
+                    if not indices_possible:
+                        return False
         return True
 
     @classmethod

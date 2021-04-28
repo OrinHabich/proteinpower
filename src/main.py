@@ -13,25 +13,10 @@ acids_sequence5 = 'HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH'  # Best: 
 # With C's
 acids_sequence6 = 'PPCHHPPCHPPPPCHHHHCHHPPHHPPPPHHPPHPP'  # Best: -28
 acids_sequence7 = 'CPPCHPPCHPPCPPHHHHHHCCPCHPPCPCHPPHPC'
-acids_sequence8 = 'HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH'  # Best: -55
+acids_sequence8 = 'HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH'  # Best: -40
 acids_sequence9 = 'HCPHPHPHCHHHHPCCPPHPPPHPPPPCPPPHPPPHPHHHHCHPHPHPHH'
 
 
-def timer(fn):
-    """Generic decorator to test performance."""
-    import time
-
-    @wraps(fn)
-    def wrapper_timer(*args, **kwargs):
-        start_time = time.time()
-        result = fn(*args, *kwargs)
-        end_time = time.time()
-        execution_time = round(end_time - start_time, 3)
-        print(f'{fn.__name__} execution time: {execution_time} seconds')
-        return result
-    return wrapper_timer
-
-@timer
 def best_of(acids_sequence, n, m, folding=None):
     """Take a sequence of acids. Give it a certain folding. Try to fold the
     protein m times to improve this folding. Print the resulting score. Repeat
@@ -49,7 +34,7 @@ def best_of(acids_sequence, n, m, folding=None):
             if not Algorithms.random_folding(protein):
                 print("failed to get a random folding as start")
                 continue
-        if not Algorithms.fold_n_times(m, protein, max_tolerance=5):
+        if not Algorithms.fold_n_times(m, protein):
             print("failed to fold n times")
         score = Algorithms.score(protein)
         if score < best_score:
@@ -59,13 +44,13 @@ def best_of(acids_sequence, n, m, folding=None):
     protein.acids = best_result
     return protein
 
-
-# protein = Protein(acids_sequence8)
-protein = best_of(acids_sequence8, 1, 10, 'random_folding')
+protein = best_of(acids_sequence1, 1, 1)
 print('score van best_folding', Algorithms.score(protein))
 ProteinPlotter.plot(protein)
 
-Algorithms.cube_folding(protein, shift='--', d3=True)
-print('score of cube_folding:', Algorithms.score(protein))
-ProteinPlotter.plot(protein)
+
+# protein = Protein(acids_sequence8)
+# Algorithms.cube_folding(protein, shift='xx', d3=True)
+# print('score of cube_folding:', Algorithms.score(protein))
+# ProteinPlotter.plot(protein)
 

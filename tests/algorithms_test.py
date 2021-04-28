@@ -20,9 +20,10 @@ def test_fold_100_times(protein, acids_sequence, helpers):
 def test_random_folding(protein, acids_sequence, helpers):
     Algorithms.random_folding(protein)
     helpers.assert_correct_order(protein, acids_sequence)
-    assert protein.acids[0]['x'] == 0
-    assert protein.acids[0]['y'] == 0
-    assert protein.acids[0]['z'] == 0
+    assert sum(protein.acids[0][c] == 0 for c in 'xyz') == 3
+    # assert protein.acids[0]['x'] == 0
+    # assert protein.acids[0]['y'] == 0
+    # assert protein.acids[0]['z'] == 0
     assert protein._injective()
 
 def test_cube_folding(protein, acids_sequence, helpers):
