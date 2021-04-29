@@ -17,12 +17,12 @@ acids_sequence8 = 'HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH'  # Best: 
 acids_sequence9 = 'HCPHPHPHCHHHHPCCPPHPPPHPPPPCPPPHPPPHPHHHHCHPHPHPHH'
 
 
-def best_of(acids_sequence, n, m, folding=None):
+def best_of_experiments(acids_sequence, n, m, folding=None):
     """Take a sequence of acids. Give it a certain folding. Try to fold the
     protein m times to improve this folding. Print the resulting score. Repeat
     this n times. Return the best result.
     """
-    print('folding:', folding)
+    print('Start folding:', folding)
     best_score = 1
     for _ in range(n):
         protein = Protein(acids_sequence)
@@ -34,23 +34,24 @@ def best_of(acids_sequence, n, m, folding=None):
             if not Algorithms.random_folding(protein):
                 print("failed to get a random folding as start")
                 continue
+        start_score = Algorithms.score(protein)
         if not Algorithms.fold_n_times(m, protein):
             print("failed to fold n times")
-        score = Algorithms.score(protein)
-        if score < best_score:
-            best_score = score
+        end_score = Algorithms.score(protein)
+        if end_score < best_score:
+            best_score = end_score
             best_result = [acid.copy() for acid in protein.acids]
-        print('score: {}, best_score: {}'.format(score, best_score))
+        print('Start with score:\t{}\t\tEnd with score:\t{}\t\tBest score:\t{}'.format(start_score, end_score, best_score))
     protein.acids = best_result
     return protein
 
-protein = best_of(acids_sequence1, 1, 1)
-print('score van best_folding', Algorithms.score(protein))
+protein = best_of_experiments(acids_sequence8, 10, 1000, 'random_folding')
 ProteinPlotter.plot(protein)
 
 
+
 # protein = Protein(acids_sequence8)
-# Algorithms.cube_folding(protein, shift='xx', d3=True)
+# Algorithms.cube_folding(protein, shift='', d3=True)
 # print('score of cube_folding:', Algorithms.score(protein))
 # ProteinPlotter.plot(protein)
 
