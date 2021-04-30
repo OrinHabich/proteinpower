@@ -11,7 +11,7 @@ acids_sequence4 = 'PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP'
 acids_sequence5 = 'HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH'  # Best: -23
 
 # With C's
-acids_sequence6 = 'PPCHHPPCHPPPPCHHHHCHHPPHHPPPPHHPPHPP'  # Best: -28
+acids_sequence6 = 'PPCHHPPCHPPPPCHHHHCHHPPHHPPPPHHPPHPP'  # Best: -31
 acids_sequence7 = 'CPPCHPPCHPPCPPHHHHHHCCPCHPPCPCHPPHPC'
 acids_sequence8 = 'HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH'  # Best: -40
 acids_sequence9 = 'HCPHPHPHCHHHHPCCPPHPPPHPPPPCPPPHPPPHPHHHHCHPHPHPHH'
@@ -45,7 +45,7 @@ def best_of_experiments(acids_sequence, n, m, folding=None):
     protein.acids = best_result
     return protein
 
-protein = best_of_experiments(acids_sequence8, 10, 1000, 'random_folding')
+protein = best_of_experiments(acids_sequence6, 50, 1000, 'random_folding')
 ProteinPlotter.plot(protein)
 
 
