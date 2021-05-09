@@ -21,10 +21,9 @@ class Algorithms():
         relevant_acids = [acid for acid in acids if acid['acid_type'] != 'P']
         weak_bonds = []
         strong_bonds = []
-        coordinates = lambda acid: (v for (k, v) in acid.items() if k in 'xyz')
         for acid1, acid2 in itertools.combinations(relevant_acids, 2):
-            if abs(acids.index(acid1) - acids.index(acid2)) > 1 and\
-                math.dist(coordinates(acid1), coordinates(acid2)) == 1:
+            if not cls._neighbors(acids, acid1, acid2) and\
+               cls._distance(acid1, acid2) == 1:
                 if acid1['acid_type'] == 'H' or acid2['acid_type'] == 'H':
                     weak_bonds.append([acid1, acid2])
                 else:
@@ -119,12 +118,26 @@ class Algorithms():
             z += 1
         return False
 
-    @staticmethod
-    def _same_position(folded_part, new_acid):
+    @classmethod
+    def _same_position(cls, folded_part, new_acid):
         """Return True iff the position of some new acid is already taken."""
-        for previous_acid in folded_part:
-            if previous_acid['x'] == new_acid['x'] and\
-               previous_acid['y'] == new_acid['y'] and\
-               previous_acid['z'] == new_acid['z']:
+        coordinates_new_acid = cls._coordinates(new_acid)
+        for acid in folded_part:
+            if cls._coordinates(acid) == coordinates_new_acid:
                 return True
         return False
+
+    @classmethod
+    def _neighbors(cls, acids, acid1, acid2):
+        """Check if two acids are consecutive in the acids sequence."""
+        return abs(acids.index(acid1) - acids.index(acid2)) == 1
+
+    @classmethod
+    def _distance(cls, acid1, acid2):
+        """Euclidean distance betweeen two points."""
+        return math.dist(cls._coordinates(acid1), cls._coordinates(acid2))
+
+    @staticmethod
+    def _coordinates(acid):
+        """Returns list with coordinates of given acid."""
+        return [v for (k, v) in acid.items() if k in 'xyz']
