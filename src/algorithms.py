@@ -21,9 +21,10 @@ class Algorithms():
         relevant_acids = [acid for acid in acids if acid['acid_type'] != 'P']
         weak_bonds = []
         strong_bonds = []
+        coordinates = lambda acid: (v for (k, v) in acid.items() if k in 'xyz')
         for acid1, acid2 in itertools.combinations(relevant_acids, 2):
             if abs(acids.index(acid1) - acids.index(acid2)) > 1 and\
-               cls._distance(acid1, acid2) == 1:
+                math.dist(coordinates(acid1), coordinates(acid2)) == 1:
                 if acid1['acid_type'] == 'H' or acid2['acid_type'] == 'H':
                     weak_bonds.append([acid1, acid2])
                 else:
@@ -127,11 +128,3 @@ class Algorithms():
                previous_acid['z'] == new_acid['z']:
                 return True
         return False
-
-    @staticmethod
-    def _distance(point1, point2):
-        """Return euclidean distance between two points."""
-        sum_squares = 0
-        for dimension in 'xyz':
-            sum_squares += abs(point1[dimension] - point2[dimension])**2
-        return math.sqrt(sum_squares)

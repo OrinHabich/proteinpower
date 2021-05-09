@@ -45,7 +45,7 @@ def best_of_experiments(acids_sequence, n, m, folding=None):
     protein.acids = best_result
     return protein
 
-protein = best_of_experiments(acids_sequence6, 50, 1000, 'random_folding')
+protein = best_of_experiments(acids_sequence6, 10, 100, 'random_folding')
 ProteinPlotter.plot(protein)
 
 
