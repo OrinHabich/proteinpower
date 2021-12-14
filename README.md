@@ -18,10 +18,12 @@ This project is about folding proteins. A protein is a sequence of acids of vari
 
 ## Getting Started
 
-Clone this project with the following line of code:
+- Download or clone this project.
+- cd into the directory and install the requirements with the following line of code:
 ```
-git clone https://github.com/0rin/ProteinPower.git
+pip install -r requirements.txt
 ```
+Consider using a virtual environment.
 
 ### Prerequisites
 
@@ -34,12 +36,6 @@ The following Python packages are used:
   - Random
   - Sys
   - Itertools
-
-You can easy-install them using the following line of code:
-```
-pip install -r requirements.txt
-```
-Note that this file seems to contain many packages not needed for this project. Consider using a virtual environment.
 
 ### Run the code
 
